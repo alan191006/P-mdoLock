@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Home"
+        android:id="@+id/home"
+        android:icon="@drawable/home_selector" />
+    <item android:title="Todo"
+        android:id="@+id/todo"
+        android:icon="@drawable/todo_selector" />
+    <item android:title="Compass"
+        android:id="@+id/compass"
+        android:icon="@drawable/compass_selector" />
+    <item android:title="Settings"
+        android:id="@+id/settings"
+        android:icon="@drawable/setting_selector" />
+</menu>

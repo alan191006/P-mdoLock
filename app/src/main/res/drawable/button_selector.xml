@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Button is pressed -->
+    <item android:state_pressed="true" android:color="@color/primary" />
+
+    <!-- Button is focused -->
+    <item android:state_focused="true" android:color="@color/primary_1" />
+
+    <!-- Default state -->
+    <item android:color="@color/primary_2" />
+</selector>

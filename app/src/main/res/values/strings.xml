@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">PomodoLock</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+
+    <string name="enter_task_name">Enter task…</string>
+    <string name="add">Add</string>
+    <string name="add_task">Add task</string>
+    <string name="cancel">Cancel</string>
+    <string name="task_name_required">Task is required</string>
+
+    <string-array name="lesson_name_txt">
+        <item>SAMPLE_NAME1</item>
+        <item>SAMPLE_NAME2</item>
+    </string-array>
+
+    <string-array name="lesson_description_txt">
+        <item>SAMPLE_DESC1</item>
+        <item>SAMPLE_DESC2</item>
+    </string-array>
+
+    <string-array name="lesson_content_txt">
+        <item>SAMPLE_CONTENT1</item>
+        <item>SAMPLE_CONTENT2</item>
+    </string-array>
+</resources>
