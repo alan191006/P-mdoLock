@@ -15,7 +15,8 @@ import vn.nhh.aid.MainActivity.Companion.database
 
 // import vn.nhh.aid.fragments.TodoFragment.TodoAdapter.MyViewHolder
 
-class TodoAdapter(private var todoList: List<TodoItem>) : RecyclerView.Adapter<TodoHolder>() {
+class TodoAdapter(private var todoList: List<TodoItem>) :
+    RecyclerView.Adapter<TodoHolder>() {
 
     @SuppressLint("NotifyDataSetChanged")
     fun updateTodoList(newTodoList: List<TodoItem>) {
