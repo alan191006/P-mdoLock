@@ -44,8 +44,11 @@ android {
     }
 }
 
+<<<<<<< Updated upstream
 def room_version = '2.5.2'
 
+=======
+>>>>>>> Stashed changes
 dependencies {
 
     implementation 'androidx.core:core-ktx:1.10.1'
@@ -64,6 +67,16 @@ dependencies {
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.2'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.2'
 
+<<<<<<< Updated upstream
     implementation "androidx.room:room-ktx:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
 }
+=======
+    // Database
+    implementation "androidx.room:room-ktx:2.5.2" // Use the same version as other androidx libraries
+    kapt "androidx.room:room-compiler:2.5.2" // Use the same version as other androidx libraries
+
+    // Request
+    implementation 'com.squareup.okhttp3:okhttp:4.2.2'
+}
+>>>>>>> Stashed changes

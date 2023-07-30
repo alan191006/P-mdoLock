@@ -1,51 +1,69 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<!-- fragment_compass.xml -->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_primary"
-    android:theme="@style/ThemeOverlay.FirstAid.FullscreenContainer"
-    tools:context=".fragments.HomeFragment.HomeFragment">
+    android:background="@color/background_secondary"
+    android:orientation="vertical">
 
-    <!-- The primary full-screen view. This can be replaced with whatever view
-         is needed to present your content, e.g. VideoView, SurfaceView,
-         TextureView, etc. -->
-    <TextView
-        android:id="@+id/fullscreen_content"
+    <!-- Top section with date and arrow buttons -->
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:keepScreenOn="true"
-        android:text="Map Fragment"
-        android:textColor="@color/primary"
-        android:textSize="50sp"
-        android:textStyle="bold" />
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:padding="16dp">
 
-    <!-- This FrameLayout insets its children based on system windows using
-         android:fitsSystemWindows. -->
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fitsSystemWindows="true">
-
-        <LinearLayout
-            android:id="@+id/fullscreen_content_controls"
-            style="@style/Widget.Theme.FirstAid.ButtonBar.Fullscreen"
-            android:layout_width="match_parent"
+        <ImageButton
+            android:id="@+id/previousArrow"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center_horizontal"
-            android:orientation="horizontal"
-            tools:ignore="UselessParent">
+            android:src="@drawable/ic_previous_arrow"
+            android:background="@drawable/round_add"
+            android:contentDescription="previous_arrow"
+            android:layout_gravity="center_vertical"/>
 
-            <Button
-                android:id="@+id/dummy_button"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/dummy_button" />
+        <TextView
+            android:id="@+id/dateTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:text="dd/MM/yyyy"
+            android:layout_gravity="center_vertical"/>
 
-        </LinearLayout>
-    </FrameLayout>
+        <ImageButton
+            android:id="@+id/nextArrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_next_arrow"
+            android:background="@drawable/round_add"
+            android:contentDescription="next_arrow"
+            android:layout_gravity="center_vertical"/>
 
-</FrameLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/noClassesTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        android:text="You have no class today!"
+        android:layout_marginTop="40dp"
+        android:textSize="24sp" />
+
+    <!-- RecyclerView to display timetable events -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/compassRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:padding="16dp"/>
+
+</LinearLayout>

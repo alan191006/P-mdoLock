@@ -7,16 +7,35 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+<<<<<<< Updated upstream
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import vn.nhh.aid.databinding.FragmentCompassBinding
+=======
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import vce.nhs.pomodolock.R
+import vce.nhs.pomodolock.databinding.FragmentCompassBinding
+import vce.nhs.pomodolock.utils.Compass
+import java.text.SimpleDateFormat
+import java.util.*
+>>>>>>> Stashed changes
+
+import java.io.StringReader
+import java.time.LocalDate
+import java.time.ZoneId
+import java.time.format.DateTimeFormatter
+import java.util.*
 
 /**
  * An example full-screen fragment that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  */
-class CompassFragment : Fragment() {
+class CompassFragment : Fragment(), Compass.TimetableLoadListener {
     private val hideHandler = Handler(Looper.myLooper()!!)
 
     @Suppress("InlinedApi")
@@ -59,12 +78,15 @@ class CompassFragment : Fragment() {
     private var fullscreenContent: View? = null
     private var fullscreenContentControls: View? = null
 
+<<<<<<< Updated upstream
     private var _binding: FragmentCompassBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
 
+=======
+>>>>>>> Stashed changes
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -76,9 +98,17 @@ class CompassFragment : Fragment() {
 
     }
 
+    private var currentDate: LocalDate = LocalDate.now()
+
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var compassAdapter: CompassAdapter
+
+    private val timezone = 10
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+<<<<<<< Updated upstream
         visible = true
 
         dummyButton = binding.dummyButton
@@ -91,6 +121,86 @@ class CompassFragment : Fragment() {
         // operations to prevent the jarring behavior of controls going away
         // while interacting with the UI.
         dummyButton?.setOnTouchListener(delayHideTouchListener)
+=======
+        // Set up RecyclerView
+        val recyclerView = binding.compassRecyclerView
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+
+        // Initialize the adapter with an empty list
+        compassAdapter = CompassAdapter(emptyList())
+        recyclerView.adapter = compassAdapter
+
+        // Set the initial date to the current date
+        currentDate = LocalDate.now()
+
+        // Load timetable for the initial date
+        loadTimetableForCurrentDate()
+
+        // Replace with your actual arrow button IDs
+        val previousArrow = view.findViewById<View>(R.id.previousArrow)
+        val nextArrow = view.findViewById<View>(R.id.nextArrow)
+
+        // Set click listeners for the arrow buttons
+        previousArrow.setOnClickListener { loadTimetableForPreviousDay() }
+        nextArrow.setOnClickListener { loadTimetableForNextDay() }
+
+        // Get the TextView for displaying the date
+        val dateTextView = view.findViewById<TextView>(R.id.dateTextView)
+        updateDateTextView(dateTextView)
+    }
+
+    override fun onTimetableLoaded(timetableData: String) {
+        val compassModels = parseTimetableData(timetableData, timezone)
+
+        Log.d("CompassFragment", "Models $compassModels")
+
+        if (compassModels.isEmpty()) {
+            Log.d("CompassFragment", "No timetable data available for ${currentDate.format(DateTimeFormatter.ISO_DATE)}.")
+
+            // Show the "noClassesTextView" and hide the RecyclerView when there are no classes
+            activity?.runOnUiThread {
+                view?.findViewById<TextView>(R.id.noClassesTextView)?.visibility = View.VISIBLE
+                view?.findViewById<RecyclerView>(R.id.compassRecyclerView)?.visibility = View.GONE
+            }
+        } else {
+            Log.d("CompassFragment", "Number of timetable items: ${compassModels.size}")
+
+            // Hide the "noClassesTextView" and show the RecyclerView when there are classes
+            activity?.runOnUiThread {
+                view?.findViewById<TextView>(R.id.noClassesTextView)?.visibility = View.GONE
+                view?.findViewById<RecyclerView>(R.id.compassRecyclerView)?.visibility = View.VISIBLE
+
+                // Update the RecyclerView with the new data and the current date
+                compassAdapter.updateTimetable(compassModels)
+            }
+        }
+    }
+
+
+    private fun loadTimetableForCurrentDate() {
+        val timetableUrl = "https://nhs-vic.compass.education/download/sharedCalendar.aspx?uid=27127&key=5aa5f43e-e8ce-40ba-8825-cf527ab68555&c.ics"
+        Compass.loadTimetableForDate(timetableUrl, currentDate, timezone, this)
+    }
+
+    private fun loadTimetableForPreviousDay() {
+        currentDate = currentDate.minusDays(1)
+        loadTimetableForCurrentDate()
+        updateDateTextView(requireView().findViewById(R.id.dateTextView))
+    }
+
+    private fun loadTimetableForNextDay() {
+        currentDate = currentDate.plusDays(1)
+        loadTimetableForCurrentDate()
+        updateDateTextView(requireView().findViewById(R.id.dateTextView))
+    }
+
+    private fun updateDateTextView(dateTextView: TextView) {
+        dateTextView.text = currentDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
+    }
+
+    override fun onTimetableLoadFailed(errorMessage: String) {
+        Log.wtf("CompassFragment", "Timetable Load Failed: $errorMessage")
+>>>>>>> Stashed changes
     }
 
     override fun onResume() {
