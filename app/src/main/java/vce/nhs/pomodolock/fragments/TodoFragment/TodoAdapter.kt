@@ -1,19 +1,19 @@
-package vn.nhh.aid.fragments.TodoFragment
+package vce.nhs.pomodolock.fragments.TodoFragment
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import vn.nhh.aid.R
-import vn.nhh.aid.database.TodoFragment.TodoItem
+import vce.nhs.pomodolock.R
+import vce.nhs.pomodolock.database.TodoFragment.TodoItem
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import vn.nhh.aid.MainActivity.Companion.database
+import vce.nhs.pomodolock.MainActivity.Companion.database
 
-// import vn.nhh.aid.fragments.TodoFragment.TodoAdapter.MyViewHolder
+// import vce.nhs.pomodolock.fragments.TodoFragment.TodoAdapter.MyViewHolder
 
 class TodoAdapter(private var todoList: List<TodoItem>) :
     RecyclerView.Adapter<TodoHolder>() {

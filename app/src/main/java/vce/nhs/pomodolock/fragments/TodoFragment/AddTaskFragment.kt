@@ -1,4 +1,4 @@
-package vn.nhh.aid.fragments.TodoFragment
+package vce.nhs.pomodolock.fragments.TodoFragment
 
 import android.app.Dialog
 import android.content.Context
@@ -7,7 +7,7 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
-import vn.nhh.aid.R
+import vce.nhs.pomodolock.R
 
 class AddTaskFragment : DialogFragment() {
 
@@ -26,12 +26,12 @@ class AddTaskFragment : DialogFragment() {
         val buttonAdd = dialogView.findViewById<Button>(R.id.buttonAdd)
 
         builder.setView(dialogView)
-            .setTitle(R.string.add_task)
-            .setNegativeButton(R.string.cancel) { dialog, _ ->
-                dialog.dismiss()
-            }
 
         val dialog = builder.create()
+
+        // Set a transparent background for the dialog window
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+
         dialog.setOnShowListener {
             buttonAdd.setOnClickListener {
                 val taskName = editTextTask.text.toString().trim()
@@ -46,6 +46,7 @@ class AddTaskFragment : DialogFragment() {
 
         return dialog
     }
+
 
     override fun onAttach(context: Context) {
         super.onAttach(context)

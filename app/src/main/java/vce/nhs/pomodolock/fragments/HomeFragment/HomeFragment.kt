@@ -1,5 +1,6 @@
-package vn.nhh.aid.fragments.HomeFragment
+package vce.nhs.pomodolock.fragments.HomeFragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -11,10 +12,10 @@ import android.widget.Button
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import vn.nhh.aid.MainActivity
-import vn.nhh.aid.R
-import vn.nhh.aid.databinding.FragmentHomeBinding
-import vn.nhh.aid.fragments.SessionFragment.SessionFragment
+import vce.nhs.pomodolock.MainActivity
+import vce.nhs.pomodolock.R
+import vce.nhs.pomodolock.SessionActivity
+import vce.nhs.pomodolock.databinding.FragmentHomeBinding
 
 /**
  * An example full-screen fragment that shows and hides the system UI (i.e.
@@ -86,8 +87,8 @@ class HomeFragment : Fragment() {
         val centerButton: ImageButton = view.findViewById(R.id.center_button)
 
         centerButton.setOnClickListener {
-            val mainActivity = activity as MainActivity
-            mainActivity.replaceFragment(SessionFragment())
+            val intent = Intent(activity, SessionActivity::class.java)
+            startActivity(intent)
         }
     }
 

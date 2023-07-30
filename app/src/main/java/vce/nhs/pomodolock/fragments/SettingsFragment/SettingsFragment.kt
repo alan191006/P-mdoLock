@@ -1,4 +1,4 @@
-package vn.nhh.aid.fragments.SettingsFragment
+package vce.nhs.pomodolock.fragments.SettingsFragment
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -15,8 +15,11 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.Fragment
-import vn.nhh.aid.R
-import vn.nhh.aid.databinding.FragmentSettingBinding
+import vce.nhs.pomodolock.R
+import vce.nhs.pomodolock.databinding.FragmentSettingBinding
+import android.content.Context
+import android.content.SharedPreferences
+import vce.nhs.pomodolock.fragments.LoginFragment.LoginFragment
 
 /**
  * An example full-screen fragment that shows and hides the system UI (i.e.
@@ -82,6 +85,7 @@ class SettingsFragment : Fragment() {
 
     }
 
+
     @SuppressLint("UseSwitchCompatOrMaterialCode")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -95,7 +99,17 @@ class SettingsFragment : Fragment() {
 
         val editProfileButton: AppCompatButton = view.findViewById(R.id.EditProfileButton)
         editProfileButton.setOnClickListener {
-            // Code when the EditProfileButton is clicked
+            if (isLoggedIn()) {
+                // User is logged in, navigate to the edit profile page
+                // Implement the logic to navigate to the edit profile page here
+            } else {
+                // User is not logged in, navigate to the login page
+                val loginFragment = LoginFragment()
+                parentFragmentManager.beginTransaction()
+                    .replace(R.id.frameLayout, loginFragment)
+                    .addToBackStack(null)
+                    .commit()
+            }
         }
 
         val switch1: Switch = view.findViewById(R.id.Switch1)
@@ -139,6 +153,10 @@ class SettingsFragment : Fragment() {
         settingField3.setOnClickListener {
             // Code when the RelativeLayout is clicked
         }
+    }
+
+    private fun isLoggedIn(): Boolean {
+        return false
     }
 
     override fun onResume() {

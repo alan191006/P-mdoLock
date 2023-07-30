@@ -1,29 +1,27 @@
-package vn.nhh.aid.fragments.CompassFragment
+package vce.nhs.pomodolock.fragments.CompassFragment
 
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
-<<<<<<< Updated upstream
+
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import vn.nhh.aid.databinding.FragmentCompassBinding
-=======
+import vce.nhs.pomodolock.databinding.FragmentCompassBinding
+
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import vce.nhs.pomodolock.R
-import vce.nhs.pomodolock.databinding.FragmentCompassBinding
 import vce.nhs.pomodolock.utils.Compass
 import java.text.SimpleDateFormat
 import java.util.*
->>>>>>> Stashed changes
+
 
 import java.io.StringReader
 import java.time.LocalDate
@@ -78,15 +76,13 @@ class CompassFragment : Fragment(), Compass.TimetableLoadListener {
     private var fullscreenContent: View? = null
     private var fullscreenContentControls: View? = null
 
-<<<<<<< Updated upstream
     private var _binding: FragmentCompassBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
 
-=======
->>>>>>> Stashed changes
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -108,12 +104,8 @@ class CompassFragment : Fragment(), Compass.TimetableLoadListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-<<<<<<< Updated upstream
         visible = true
 
-        dummyButton = binding.dummyButton
-        fullscreenContent = binding.fullscreenContent
-        fullscreenContentControls = binding.fullscreenContentControls
         // Set up the user interaction to manually show or hide the system UI.
         fullscreenContent?.setOnClickListener { toggle() }
 
@@ -121,7 +113,6 @@ class CompassFragment : Fragment(), Compass.TimetableLoadListener {
         // operations to prevent the jarring behavior of controls going away
         // while interacting with the UI.
         dummyButton?.setOnTouchListener(delayHideTouchListener)
-=======
         // Set up RecyclerView
         val recyclerView = binding.compassRecyclerView
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
@@ -200,7 +191,7 @@ class CompassFragment : Fragment(), Compass.TimetableLoadListener {
 
     override fun onTimetableLoadFailed(errorMessage: String) {
         Log.wtf("CompassFragment", "Timetable Load Failed: $errorMessage")
->>>>>>> Stashed changes
+
     }
 
     override fun onResume() {
