@@ -1,4 +1,4 @@
-package vn.nhh.aid.fragments.TodoFragment
+package vce.nhs.pomodolock.fragments.TodoFragment
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -14,10 +14,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.*
-import vn.nhh.aid.MainActivity.Companion.database
-import vn.nhh.aid.R
-import vn.nhh.aid.database.TodoFragment.TodoItem
-import vn.nhh.aid.databinding.FragmentTodoBinding
+import vce.nhs.pomodolock.MainActivity.Companion.database
+import vce.nhs.pomodolock.R
+import vce.nhs.pomodolock.database.TodoFragment.TodoItem
+import vce.nhs.pomodolock.databinding.FragmentTodoBinding
 import java.lang.Runnable
 
 /**

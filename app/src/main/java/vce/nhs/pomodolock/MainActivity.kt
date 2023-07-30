@@ -1,4 +1,4 @@
-package vn.nhh.aid
+package vce.nhs.pomodolock
 
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
@@ -7,16 +7,16 @@ import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.room.Room
 import kotlinx.coroutines.*
-import vn.nhh.aid.database.TodoFragment.TodoDatabase
-import vn.nhh.aid.database.TodoFragment.TodoItem
+import vce.nhs.pomodolock.database.TodoFragment.TodoDatabase
+import vce.nhs.pomodolock.database.TodoFragment.TodoItem
 
-import vn.nhh.aid.databinding.ActivityMainBinding
-import vn.nhh.aid.fragments.CompassFragment.CompassFragment
-import vn.nhh.aid.fragments.HomeFragment.HomeFragment
-import vn.nhh.aid.fragments.SettingsFragment.SettingsFragment
-import vn.nhh.aid.fragments.TodoFragment.AddTaskFragment
-import vn.nhh.aid.fragments.TodoFragment.TodoAdapter
-import vn.nhh.aid.fragments.TodoFragment.TodoFragment
+import vce.nhs.pomodolock.databinding.ActivityMainBinding
+import vce.nhs.pomodolock.fragments.CompassFragment.CompassFragment
+import vce.nhs.pomodolock.fragments.HomeFragment.HomeFragment
+import vce.nhs.pomodolock.fragments.SettingsFragment.SettingsFragment
+import vce.nhs.pomodolock.fragments.TodoFragment.AddTaskFragment
+import vce.nhs.pomodolock.fragments.TodoFragment.TodoAdapter
+import vce.nhs.pomodolock.fragments.TodoFragment.TodoFragment
 
 private var shareInstance: MainActivity? = null
 class MainActivity : AppCompatActivity(), AddTaskFragment.AddTaskListener,
