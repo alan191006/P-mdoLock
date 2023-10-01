@@ -16,6 +16,10 @@ interface TodoDao {
     @Query("SELECT * FROM todo_items")
     fun getAllTodoItems(): List<TodoItem>
 
+    @Query("SELECT * FROM todo_items WHERE email = email")
+    suspend fun getUserTask(email: String): List<TodoItem>
+
+
     @Query("DELETE FROM todo_items WHERE id = :taskId")
     suspend fun deleteTask(taskId: Long)
 

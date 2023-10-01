@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "todo_items")
 data class TodoItem(
-    @PrimaryKey(autoGenerate = true)
+    val email: String,
     val id: Long = 0,
     val name: String,
     var state: String

@@ -5,8 +5,8 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "profiles")
 data class Profile(
-    @PrimaryKey val id: Long,
-    val name: String,
-    val age: Int,
-    // Add other profile properties as needed
+    val email: String,
+    val password: String,
+    val salt: String,
+    val url: String?
 )

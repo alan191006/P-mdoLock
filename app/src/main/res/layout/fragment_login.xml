@@ -3,14 +3,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:background="@color/background_primary"
+    android:padding="32dp">
 
-    <!-- Email Input -->
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Log In"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        android:textColor="@color/primary"
+        android:textAppearance="@android:style/TextAppearance.Material.Headline"/>
+
     <EditText
         android:id="@+id/emailInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="100dp"
         android:hint="Email"
         android:inputType="textEmailAddress" />
 
@@ -30,16 +41,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/emailInput"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
         android:layout_marginTop="24dp"
-        android:text="Log In" />
+        android:background="@drawable/round_add"
+        android:text="Log In"
+        android:textColor="@color/background_secondary"/>
 
-    <!-- Logout Button -->
     <Button
-        android:id="@+id/logoutButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/loginButton"
-        android:layout_marginTop="8dp"
-        android:text="Log Out" />
+        android:id="@+id/signUpButton"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@android:color/transparent"
+        android:text="@string/sign_up"
+        android:textAppearance="@android:style/TextAppearance.Material.Body1"
+        android:textColor="@color/gray_600"
+        android:textSize="11sp"
+        android:textStyle="normal" />
 
 </LinearLayout>

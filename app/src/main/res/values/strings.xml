@@ -11,6 +11,9 @@
     <string name="cancel">Cancel</string>
     <string name="task_name_required">Task is required</string>
 
+    <string name="sign_up">No account? <u>Sign up</u>!</string>
+    <string name="login">Have account? <u>Login</u>!</string>
+
     <string-array name="lesson_name_txt">
         <item>SAMPLE_NAME1</item>
         <item>SAMPLE_NAME2</item>

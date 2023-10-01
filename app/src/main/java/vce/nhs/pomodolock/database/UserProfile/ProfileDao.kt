@@ -11,4 +11,13 @@ interface ProfileDao {
 
     @Query("SELECT * FROM profiles WHERE id = :id")
     suspend fun getProfileById(id: Long): Profile?
+
+    @Query("SELECT * FROM profiles WHERE email = :email")
+    suspend fun getProfileByEmail(email: String): Profile?
+
+    @Query("SELECT * FROM profiles")
+    suspend fun getAllUsers(): List<Profile>
+
+    @Query("DELETE FROM profiles")
+    suspend fun deleteAllProfiles()
 }

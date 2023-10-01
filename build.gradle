@@ -4,7 +4,3 @@ plugins {
     id 'org.jetbrains.kotlin.android' version '1.7.10' apply false
     id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin' version '2.0.1' apply false
 }
-
-dependencies {
-    'us.zoom:zoom-sdk-android:5.7.1'
-}

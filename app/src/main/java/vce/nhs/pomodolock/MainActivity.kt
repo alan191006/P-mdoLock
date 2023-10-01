@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity(), AddTaskFragment.AddTaskListener,
             applicationContext,
             TodoDatabase::class.java,
             "todo_database"
-        ).build()
+        ).fallbackToDestructiveMigration().build()
 
         // Swipe database (for deving only)
         val todoDao = database.todoDao()
