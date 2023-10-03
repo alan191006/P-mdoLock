@@ -8,7 +8,6 @@ import android.content.Context
 import android.view.WindowManager
 import android.annotation.SuppressLint
 import android.content.SharedPreferences
-import android.os.Environment
 import android.util.Log
 
 // Android UI related imports
@@ -65,7 +64,7 @@ class LoginFragment : Fragment() {
             requireContext().applicationContext,
             ProfileDatabase::class.java,
             "user-database-name"
-        ).build()
+        ).fallbackToDestructiveMigration().build()
 
         val profileDao: ProfileDao = profileDatabase.profileDao()
 
@@ -84,7 +83,7 @@ class LoginFragment : Fragment() {
 
                 if (isValidInput(email, password, profileDao)) {
                     sharedPreferencesManager.setLoggedIn(true)
-                    sharedPreferencesManager.setUsername(email)
+                    sharedPreferencesManager.setUserEmail(email)
 
                     if (profile != null) {
                         if (profile.url != null) {

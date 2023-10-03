@@ -11,13 +11,10 @@ import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.*
 import vce.nhs.pomodolock.MainActivity.Companion.database
 import vce.nhs.pomodolock.R
 import vce.nhs.pomodolock.database.TodoFragment.TodoItem
-import vce.nhs.pomodolock.databinding.FragmentSignupBinding
 import vce.nhs.pomodolock.databinding.FragmentTodoBinding
 import vce.nhs.pomodolock.fragments.ProfileFragments.LoginFragment
 import vce.nhs.pomodolock.utils.SharedPreferencesManager
@@ -76,7 +73,7 @@ class TodoFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         val todoDao = database.todoDao()
-        val userEmail = SharedPreferencesManager(requireContext()).getUsername() ?: ""
+        val userEmail = SharedPreferencesManager(requireContext()).getUserEmail() ?: ""
 
         // Create an empty adapter
         todoAdapter = TodoAdapter(emptyList())
@@ -98,7 +95,7 @@ class TodoFragment : Fragment() {
     }
 
     fun onTaskAdded(taskName: String) {
-        val userEmail = SharedPreferencesManager(requireContext()).getUsername() ?: ""
+        val userEmail = SharedPreferencesManager(requireContext()).getUserEmail() ?: ""
         // Perform the necessary operations when a task is added
         // For example, insert the task into the database and update the adapter
         val newTask = TodoItem(email = userEmail, name = taskName, state = "incomplete")

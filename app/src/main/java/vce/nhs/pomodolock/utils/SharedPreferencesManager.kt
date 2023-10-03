@@ -13,12 +13,12 @@ class SharedPreferencesManager(context: Context) {
         return sharedPreferences.getBoolean("isLoggedIn", false)
     }
 
-    fun setUsername(username: String) {
-        sharedPreferences.edit().putString("username", username).apply()
+    fun setUserEmail(email: String) {
+        sharedPreferences.edit().putString("email", email).apply()
     }
 
-    fun getUsername(): String? {
-        return sharedPreferences.getString("username", null)
+    fun getUserEmail(): String? {
+        return sharedPreferences.getString("email", null)
     }
 
     fun setIcsUrl(url: String) {

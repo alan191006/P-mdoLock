@@ -8,7 +8,7 @@ import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 import vce.nhs.pomodolock.database.TodoFragment.TodoDao
 
-@Database(entities = [Profile::class], version = 3)
+@Database(entities = [Profile::class], version = 4)
 abstract class ProfileDatabase : RoomDatabase() {
     abstract fun profileDao(): ProfileDao
 }

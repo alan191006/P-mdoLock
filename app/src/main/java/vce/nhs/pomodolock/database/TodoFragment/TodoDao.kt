@@ -16,7 +16,7 @@ interface TodoDao {
     @Query("SELECT * FROM todo_items")
     fun getAllTodoItems(): List<TodoItem>
 
-    @Query("SELECT * FROM todo_items WHERE email = email")
+    @Query("SELECT * FROM todo_items WHERE email = :email")
     suspend fun getUserTask(email: String): List<TodoItem>
 
 

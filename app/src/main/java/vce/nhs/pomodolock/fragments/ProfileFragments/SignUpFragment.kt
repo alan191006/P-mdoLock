@@ -55,7 +55,7 @@ class SignUpFragment : Fragment() {
             requireContext().applicationContext,
             ProfileDatabase::class.java,
             "user-database-name"
-        ).build()
+        ).fallbackToDestructiveMigration().build()
 
         emailInput = view.findViewById(R.id.emailInput)
         passwordInput = view.findViewById(R.id.passwordInput)
@@ -76,7 +76,7 @@ class SignUpFragment : Fragment() {
                 // Hash the password using the generated salt
                 val hashedPassword = BCrypt.hashpw(password, salt)
 
-                val user = Profile(id = generateRandomId(), email = email, password = hashedPassword, salt = salt, url = url)
+                val user = Profile(email = email, password = hashedPassword, salt = salt, url = url)
 
                 GlobalScope.launch(Dispatchers.IO) {
                     // Insert the user into the database
@@ -118,7 +118,7 @@ class SignUpFragment : Fragment() {
             withContext(Dispatchers.Main) {
                 // Log the user data
                 for (user in allUsers) {
-                    Log.w("UserData", "ID: ${user.id}, Email: ${user.email}, Password: ${user.password}, URL: ${user.url ?: "N/A"}")
+                    Log.w("UserData", "Email: ${user.email}, Password: ${user.password}, URL: ${user.url ?: "N/A"}")
                 }
             }
         }

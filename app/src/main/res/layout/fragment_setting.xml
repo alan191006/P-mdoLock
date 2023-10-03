@@ -38,7 +38,7 @@
                 android:background="@drawable/primary_button"
                 android:paddingStart="25dp"
                 android:paddingEnd="25dp"
-                android:text="Edit Profile"
+                android:text="Log In"
                 android:textAllCaps="false"
                 android:textColor="@color/background_primary"
                 android:textSize="18sp"
