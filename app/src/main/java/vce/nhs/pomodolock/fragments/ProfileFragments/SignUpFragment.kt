@@ -28,6 +28,7 @@ import vce.nhs.pomodolock.database.UserProfile.Profile
 import vce.nhs.pomodolock.database.UserProfile.ProfileDatabase
 import vce.nhs.pomodolock.databinding.FragmentSignupBinding
 import vce.nhs.pomodolock.fragments.ProfileFragments.LoginFragment
+import vce.nhs.pomodolock.utils.isValidInput
 import kotlin.random.Random
 
 class SignUpFragment : Fragment() {
@@ -124,19 +125,9 @@ class SignUpFragment : Fragment() {
         }
     }
 
-    private fun isValidInput(email: String, password: String, confirmPassword: String): Boolean {
-        // Check if the email is valid, passwords match, etc.
-        return email.isNotEmpty() && password.isNotEmpty() && password == confirmPassword
-    }
-
     private suspend fun insertUserIntoDatabase(user: Profile) {
         // Insert the user into the database using Room
         profileDatabase.profileDao().insert(user)
-    }
-
-    private fun generateRandomId(): Long {
-        // Generate a random ID for the user
-        return Random.nextLong(1, Long.MAX_VALUE)
     }
 
     // Full screen (Hide action + top bar)

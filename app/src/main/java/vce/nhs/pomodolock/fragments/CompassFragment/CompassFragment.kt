@@ -10,7 +10,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import vce.nhs.pomodolock.databinding.FragmentCompassBinding
@@ -19,23 +18,18 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import vce.nhs.pomodolock.R
-import vce.nhs.pomodolock.databinding.FragmentSignupBinding
-import vce.nhs.pomodolock.utils.Compass
-import java.text.SimpleDateFormat
+import vce.nhs.pomodolock.utils.CompassHelper
 import java.util.*
 
 
-import java.io.StringReader
 import java.time.LocalDate
-import java.time.ZoneId
 import java.time.format.DateTimeFormatter
-import java.util.*
 
 /**
  * An example full-screen fragment that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  */
-class CompassFragment : Fragment(), Compass.TimetableLoadListener {
+class CompassFragment : Fragment(), CompassHelper.TimetableLoadListener {
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -117,7 +111,7 @@ class CompassFragment : Fragment(), Compass.TimetableLoadListener {
 
     private fun loadTimetableForCurrentDate() {
         val timetableUrl = "https://nhs-vic.compass.education/download/sharedCalendar.aspx?uid=27127&key=5aa5f43e-e8ce-40ba-8825-cf527ab68555&c.ics"
-        Compass.loadTimetableForDate(timetableUrl, currentDate, timezone, this)
+        CompassHelper.loadTimetableForDate(timetableUrl, currentDate, timezone, this)
     }
 
     private fun loadTimetableForPreviousDay() {

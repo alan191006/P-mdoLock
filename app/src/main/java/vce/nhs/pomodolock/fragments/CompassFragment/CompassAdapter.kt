@@ -1,13 +1,9 @@
 package vce.nhs.pomodolock.fragments.CompassFragment
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import vce.nhs.pomodolock.R
-import vce.nhs.pomodolock.utils.Compass
-import java.util.*
 
 class CompassAdapter(private var itemList: List<CompassModel>) :
     RecyclerView.Adapter<CompassHolder>() {

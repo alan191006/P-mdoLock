@@ -4,6 +4,7 @@ plugins {
     id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
 }
 
+
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
@@ -42,10 +43,16 @@ android {
     viewBinding {
         enabled = true
     }
+    testOptions {
+        unitTests.all {
+            useJUnitPlatform()
+        }
+    }
 }
 
 def room_version = '2.5.2'
 def mockito_version = '3.11.2'
+def junit_version = '5.8.1'
 
 dependencies {
 
@@ -59,15 +66,22 @@ dependencies {
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.2'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.2'
     implementation 'androidx.test:core-ktx:1.5.0'
+    implementation 'androidx.test.ext:junit-ktx:1.1.5'
+    implementation 'androidx.fragment:fragment-testing:1.6.1'
 
     // Unit tests
-    testImplementation 'junit:junit:4.13.2'
+    testImplementation "org.junit.jupiter:junit-jupiter-api:$junit_version"
+    androidTestImplementation "org.junit.jupiter:junit-jupiter:$junit_version"
+    androidTestImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junit_version"
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
-    testImplementation 'org.mockito:mockito-core:3.11.2'
-    testImplementation 'org.mockito:mockito-android:3.11.2'
-    testImplementation 'org.mockito:mockito-inline:3.11.2'
+    testImplementation "org.mockito:mockito-core:$mockito_version"
+    testImplementation "org.mockito:mockito-android:$mockito_version"
+    testImplementation "org.mockito:mockito-inline:$mockito_version"
+
+    testImplementation 'org.jetbrains.kotlin:kotlin-test'
 
     testImplementation 'org.robolectric:robolectric:4.6'
 
@@ -78,8 +92,8 @@ dependencies {
     // Database
     implementation "androidx.room:room-ktx:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
-    implementation "androidx.room:room-ktx:$room_version" // Use the same version as other androidx libraries
-    kapt "androidx.room:room-compiler:$room_version" // Use the same version as other androidx libraries
+    implementation "androidx.room:room-ktx:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
 
     // Request
     implementation 'com.squareup.okhttp3:okhttp:4.2.2'
