@@ -1,5 +1,7 @@
 # PomodoLock
 
+This is my Year 12 VCE Computing Final project @ Northcote High School
+
 ---
 
 ### Instruction
